@@ -1,26 +1,36 @@
 <h1>Listing products</h1>
 
-<table>
+<div>
     <% @products.each do |product| %>
-        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-            <td>
-                <%= image_tag(product.image_url, class: 'list_image') %>
-            </td>
-            <td class="list_description">
-                <dl>
-                    <dt><%= product.title %></dt>
-                    <dd><%= truncate(strip_tags(product.description), length: 80) %></dd>
-                </dl>
-            </td>
-            <td class="list_actions">
-                <%= link_to 'Show', product %><br/>
-                <%= link_to 'Edit', edit_product_path(product) %><br/>
-                <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>
-        </tr>
+        <div class="row <%= cycle('list_line_odd', 'list_line_even') %>">
+            <div class="col-xs-12 col-sm-3 col-md-2">
+                <a class="single" href="/assets/<%= product.image_url %>">
+                    <%= image_tag(product.image_url, class: 'list_image') %>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-7 col-md-8">
+                <div class="list_description">
+                    <div class="pr_title">
+                        <%= product.title %>
+                    </div>
+                     <div class="pr_description">
+                        <%= truncate(strip_tags(product.description), length: 80) %>
+                    </div>
+                    <div class="btn-group-xs">
+                        <%= link_to 'Show', product, class: "btn btn-default btn-success" %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <div class="list_actions btn-group-xs">
+                    <%= link_to 'Edit', edit_product_path(product), class: "btn btn-default btn-warning" %>
+                    <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-danger" %>
+                </div>
+            </div>
+        </div>
     <% end %>
-</table>
+</div>
 
 <br />
 
-<%= link_to 'New product', new_product_path %>
+<%= link_to 'New product', new_product_path, class: "btn btn-primary" %>

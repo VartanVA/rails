@@ -9,8 +9,36 @@
     </head>
 
     <body class='<%= controller.controller_name %>'>
-        <div class="container">
-            <%= yield %>
-        </div>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3 text-center">
+                        <%= image_tag("logo.png", class: 'img-responsive') %>
+                        <div>
+                            <%= @page_title || "Pragmatic Bookshelf" %>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-9 text-center">
+                        <ul class="menu">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Questions</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <%= yield %>
+        
+        <footer>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    
+                </div>
+            </div>
+        </footer>
+        
     </body>
 </html>

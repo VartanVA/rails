@@ -37,3 +37,36 @@ img, a, textarea, input{
 .mart_20 {
     margin-top: 20px;
 }
+.img-responsive {
+    display: inline-block!important;
+}
+/* ***** ***** ***** ***** ***** ***** ***** *****  HEADER  ***** ***** ***** ***** ***** ***** ***** ***** */
+header {
+    background: #9c9;
+    padding-bottom: 10px;
+}
+
+.menu {
+    background: #141;
+    padding: 10px 0;
+    margin: 0px; 
+    padding: 0;
+}
+.menu li {
+    list-style: none; 
+    display: inline-block;
+}
+.menu li a {
+    color: #bfb;
+    font-size: small;
+    padding: 20px ;
+    display: inline-block;
+}
+
+
+
+/* ***** ***** ***** ***** ***** ***** ***** *****  FOOTER  ***** ***** ***** ***** ***** ***** ***** ***** */
+footer {
+    background: #605151;
+    padding: 10px 0;
+}

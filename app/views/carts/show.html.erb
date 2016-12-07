@@ -3,14 +3,26 @@
         <p id="notice"><%= notice %></p>
     <% end %>
     
-    <h2>Your Pragmatic Cart</h2>
+    <!--    
+    <h2>Ваша корзина</h2>
     
-    <ul>
-        <% @cart.line_items.each do |item| %>
-        <li><%= item.quantity %> &times; <%= item.product.title %></li>
-    <% end %>
-    </ul>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+                
+            <%= render(@cart.line_items) %>
+                        
+            <div class="text_price">
+                <span class="text-right">Итого:</span>
+                <span class="item_price"><strong><%= number_to_currency(@cart.total_price) %></strong></span>
+            </div>
+        </div>
+    </div>
     
-    <%= link_to 'Edit', edit_cart_path(@cart) %> |
-    <%= link_to 'Back', carts_path %>
+    <%= button_to 'Очистить корзину', @cart, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-danger' %>
+    <%= link_to 'Редактировать', edit_cart_path(@cart), class: "btn btn-default btn-warning" %>
+    <%= link_to 'Назад', carts_path, class: "btn btn-default btn-info" %>
+    -->
+    
+    <%= render @cart %>
+    
 </div>

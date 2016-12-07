@@ -1,27 +1,27 @@
 <div class="container">
-    <p id="notice"><%= notice %></p>
     
-    <h1>Carts</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <p id="notice"><%= notice %></p>
     
-    <table>
-      <thead>
-        <tr>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+            <h1>Корзины</h1>
+        </div>    
+    </div>
     
-      <tbody>
-        <% @carts.each do |cart| %>
-          <tr>
-            <td><%= link_to 'Show', cart %></td>
-            <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-            <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
     
-    <br>
-    
-    <%= link_to 'New Cart', new_cart_path %>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <% @carts.each do |cart| %>
+            
+                <div class="list_actions btn-group-xs">
+                    <%= link_to 'Показать', cart, class: "btn btn-info" %>
+                    <%= link_to 'Редактировать', edit_cart_path(cart), class: "btn btn-default btn-warning" %>
+                    <%= link_to 'Удалить', cart, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-danger"  %>
+                </div>
+             
+            <% end %>
+            
+            <%= link_to 'New Cart', new_cart_path, class: "btn btn-primary" %>
+        </div>    
+    </div>
 </div>

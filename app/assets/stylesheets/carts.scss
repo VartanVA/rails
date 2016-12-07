@@ -1,3 +1,29 @@
 // Place all the styles related to the Carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.carts {
+    .text_price {
+        font-size: 18px;
+        color: #000;
+        span:first-child {
+            width: 250px;
+            max-width: 100%;
+            display: inline-block;
+        }   
+        span {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            strong {
+                padding-top: 10px;
+                -webkit-border-top: 1px solid #000;
+                   -moz-border-top: 1px solid #000;
+                     -o-border-top: 1px solid #000;
+                        border-top: 1px solid #000;
+            }
+        }
+        span.text-right {
+            padding-right: 20px;
+        }
+    }
+}

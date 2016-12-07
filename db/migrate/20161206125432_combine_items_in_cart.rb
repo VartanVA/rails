@@ -4,20 +4,33 @@ class CombineItemsInCart < ActiveRecord::Migration[5.0]
   end
   
     def up
-        # Á‡ÏÂÌ‡ ÌÂÒÍÓÎ¸ÍËı Á‡ÔËÒÂÈ ‰Îˇ Ó‰ÌÓ„Ó Ë ÚÓ„Ó ÊÂ ÚÓ‚‡‡ ‚ ÍÓÁËÌÂ Ó‰ÌÓÈ Á‡ÔËÒ¸˛
+        # –∑–∞–º–µ–Ω–∞ –Ω–µ—Å–∫–æ–ª—å–∫–∏—Ö –∑–∞–ø–∏—Å–µ–π –¥–ª—è –æ–¥–Ω–æ–≥–æ –∏ —Ç–æ–≥–æ –∂–µ —Ç–æ–≤–∞—Ä–∞ –≤ –∫–æ—Ä–∑–∏–Ω–µ –æ–¥–Ω–æ–π –∑–∞–ø–∏—Å—å—é
         Cart.all.each do |cart|
-            # ÔÓ‰Ò˜ÂÚ ÍÓÎË˜ÂÒÚ‚‡ Í‡Ê‰Ó„Ó ÚÓ‚‡‡ ‚ ÍÓÁËÌÂ
+            # –ø–æ–¥—Å—á–µ—Ç –∫–æ–ª–∏—á–µ—Å—Ç–≤–∞ –∫–∞–∂–¥–æ–≥–æ —Ç–æ–≤–∞—Ä–∞ –≤ –∫–æ—Ä–∑–∏–Ω–µ
             sums = cart.line_items.group(:product_id).sum(:quantity)
             sums.each do |product_id, quantity|
                 if quantity > 1
-                    # Û‰‡ÎÂÌËÂ ÓÚ‰ÂÎ¸Ì˚ı Á‡ÔËÒÂÈ
+                    # —É–¥–∞–ª–µ–Ω–∏–µ –æ—Ç–¥–µ–ª—å–Ω—ã—Ö –∑–∞–ø–∏—Å–µ–π
                     cart.line_items.where(product_id: product_id).delete_all
-                    # Á‡ÏÂÌ‡ Ó‰ÌÓÈ Á‡ÔËÒ¸˛
+                    # –∑–∞–º–µ–Ω–∞ –æ–¥–Ω–æ–π –∑–∞–ø–∏—Å—å—é
                     item = cart.line_items.build(product_id: product_id)
                     item.quantity = quantity
                     item.save!
                 end
             end
+        end
+    end
+    
+    def down
+        # —Ä–∞–∑–±–∏–µ–Ω–∏–µ –∑–∞–ø–∏—Å–µ–π —Å quantity>1 –Ω–∞ –Ω–µ—Å–∫–æ–ª—å–∫–æ –∑–∞–ø–∏—Å–µ–π
+        LineItem.where("quantity>1").each do |line_item|
+            # add individual items
+            line_item.quantity.times do
+                LineItem.create cart_id: line_item.cart_id,
+                    product_id: line_item.product_id, quantity: 1
+            end
+            # —É–¥–∞–ª–µ–Ω–∏–µ –∏—Å—Ö–æ–¥–Ω–æ–π –∑–∞–ø–∏—Å–∏
+            line_item.destroy
         end
     end
     

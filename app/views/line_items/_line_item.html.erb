@@ -1,0 +1,15 @@
+<% @cart.line_items.each do |item| %>
+    <div class="text_price">
+        <span>
+            <% if line_item == @current_item %>
+                <div id="current_item">
+                <% else %>
+                </div>
+             <% end %>
+                
+            <%= item.quantity %>&times;
+            <%= item.product.title %>
+        </span>
+        <span class="item_price"><%= number_to_currency(item.total_price) %></span>
+    </div>
+<% end %>

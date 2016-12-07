@@ -40,6 +40,14 @@ img, a, textarea, input{
 .img-responsive {
     display: inline-block!important;
 }
+.button_to {
+    display: inline-block;
+}
+.btn {
+    margin: 5px 0;
+    color: #fff!important;
+}
+
 /* ***** ***** ***** ***** ***** ***** ***** *****  HEADER  ***** ***** ***** ***** ***** ***** ***** ***** */
 header {
     background: #9c9;
@@ -62,7 +70,9 @@ header {
     padding: 20px ;
     display: inline-block;
 }
-
+#cart {
+    display: inline-block;
+}
 
 
 /* ***** ***** ***** ***** ***** ***** ***** *****  FOOTER  ***** ***** ***** ***** ***** ***** ***** ***** */
